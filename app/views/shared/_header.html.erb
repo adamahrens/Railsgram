@@ -1,3 +1,18 @@
 <header>
-  <span>Im the header</span>
-  </header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <%= link_to '', root_path, class: 'navbar-brand core-sprite' %>
+      <ul class="navbar-nav ml-md-auto">
+        <li class="nav-item">
+          <%= link_to '', root_path, class: 'nav-link core-sprite home' %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link core-sprite explore" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link core-sprite notification" href="#"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

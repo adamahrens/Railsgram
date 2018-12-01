@@ -1,12 +1,89 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+$rails-gray: #999999;
+$rails-offwhite: #FAFAFA;
+
 body {
-  background-color: #FAFAFA;
+  background-color: $rails-offwhite;
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  color: #262626;
+  font-size: 16px;
 }
 
 .railsgram {
   font-family: 'Sedgwick Ave', cursive;
   font-size: 40px;
+}
+
+header {
+  .navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+    height: 100px;
+  }
+
+  .nav-link {
+    color: white;
+    &:hover {
+      color: $rails-offwhite;
+    }
+  }
+}
+
+footer {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-top: 50px;
+
+  .copyright {
+    color: $rails-gray;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #003569;
+  }
+}
+
+.core-sprite {
+  background-image: image-url('core-sprite-2x.png');
+  background-size: 405px 379px;
+  background-repeat: no-repeat;
+}
+
+.home {
+  background-position: -300px -330px;
+  height: 24px;
+  width: 24px;
+}
+
+.explore {
+  background-position: -50px -355px;
+  height: 24px;
+  width: 24px;
+}
+
+.notification {
+  background-position: -353px -298px;
+  height: 24px;
+  width: 24px;
+}
+
+.nav-item:not(:first-child) {
+  margin-left: 25px;
+}
+
+.navbar-brand {
+  background-position: -176px 0;
+  height: 35px;
+  width: 176px;
+}
+
+.sign-up {
+  background-color: white;
+  border: 1px solid #E6E6E6;
+  text-align: center;
+  width: 350px;
+  height: 500px;
 }

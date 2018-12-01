@@ -1,3 +1,18 @@
-<footer>
-  <span>I'm the footer</span>
+<footer class="footer mr-auto ml-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= link_to 'About Us', '#' %>
+      </div>
+      <div class="col">
+        <%= link_to 'Contact', '#' %>
+      </div>
+      <div class="col">
+        <%= link_to 'Jobs', '#' %>
+      </div>
+      <div class="col">
+        <span class="copyright">© <%= Date.today.year %> Railsgram</span>
+      </div>
+    </div>
+  </div>
 </footer>
