@@ -3,6 +3,7 @@
 
 $rails-gray: #999999;
 $rails-offwhite: #FAFAFA;
+$rails-soft-gray: #E6E6E6;
 
 body {
   background-color: $rails-offwhite;
@@ -82,8 +83,16 @@ footer {
 
 .sign-up {
   background-color: white;
-  border: 1px solid #E6E6E6;
+  border: 1px solid $rails-soft-gray;
   text-align: center;
   width: 350px;
   height: 500px;
+
+  form {
+    input {
+      background-color: $rails-offwhite;
+      border: 1px solid $rails-offwhite;
+      width: 85%;
+    }
+  }
 }
