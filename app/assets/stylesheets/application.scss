@@ -93,6 +93,11 @@ footer {
       background-color: $rails-offwhite;
       border: 1px solid $rails-offwhite;
       width: 85%;
+
+      &[type='submit'] {
+        height: 50px;
+        font-size: 20px;
+      }
     }
   }
 }
