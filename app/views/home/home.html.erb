@@ -1,46 +1,42 @@
 <div class="row">
-  <div class="col-8">
-
-    </div>
-    <div class="col-4">
-      <div class="sign-up">
-        <%# <%= fa_icon 'instagram 5x' %>
+  <%= render 'shared/iphone' %>
+  <div class="col-lg-6 sign-up">
+    <div class="row align-items-center justify-content-center">
+      <div class="col">
+        <%= fa_icon 'instagram 3x' %>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="form-group">
-            <%= f.label :name %><br />
-            <%= f.email_field :name, autofocus: true, autocomplete: "name" %>
+            <%= f.email_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'Name' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Confirm Password' %>
           </div>
 
           <div class="form-group">
             <%= f.submit "Sign up", class: 'text-white  bg-primary' %>
           </div>
         <% end %>
-
-        <% if current_user %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= render "devise/shared/links" %>
-        <% end %>
       </div>
     </div>
+    <div class="row align-items-center justify-content-center">
+      <div class="col">
+        <%= render "shared/devise_shared_links" %>
+    </div>
+  </div>
+</div>
+
 </div>

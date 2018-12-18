@@ -31,6 +31,10 @@ header {
   }
 }
 
+.form-control {
+  width: 90%;
+}
+
 footer {
   font-size: 12px;
   line-height: 18px;
@@ -81,18 +85,63 @@ footer {
   width: 176px;
 }
 
-.sign-up {
+.carousel-item {
+  img {
+    height: 427px;
+    width: 240px;
+  }
+}
+
+.dummy-phone {
+  background-image: image-url('dummy-phone-2x.png');
+  background-repeat: no-repeat;
+  background-position: right 0;
+  background-size: 454px 618px;
+  position: relative;
+  height: 618px;
+  margin-left: -35px;
+  margin-right: -15px;
+}
+
+.screen-shot {
+  position: absolute;
+  top: 99px;
+  right: 63px;
+
+  .item {
+    position: absolute;
+  }
+}
+
+@mixin box-styles {
   background-color: white;
   border: 1px solid $rails-soft-gray;
+  border-radius: 10px;
   text-align: center;
-  width: 350px;
-  height: 500px;
+  margin-top: 40px;
+}
+
+.shared-links {
+  @include box-styles;
+  height: 100px;
+  margin-top: 30px;
+  padding-top: 2%;
+  font-size: 18px;
+}
+
+.sign-up {
+  @include box-styles;
+  padding-top: 15px;
+
+  i {
+    padding-bottom: 30px;
+  }
 
   form {
     input {
       background-color: $rails-offwhite;
       border: 1px solid $rails-offwhite;
-      width: 85%;
+      width: 100%;
 
       &[type='submit'] {
         height: 50px;
