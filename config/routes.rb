@@ -25,7 +25,7 @@
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', registration: 'register' }
   get 'home/home'
   root to: 'home#home'
 end
