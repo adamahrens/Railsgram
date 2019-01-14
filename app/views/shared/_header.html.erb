@@ -7,13 +7,10 @@
           <%= link_to '', root_path, class: 'nav-link core-sprite home' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite explore" href="#"></a>
+          <%= link_to '', user_path(current_user), class: 'nav-link core-sprite explore' %>
         </li>
         <li class="nav-item">
           <a class="nav-link core-sprite notification" href="#"></a>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
         </li>
       </ul>
     </div>
