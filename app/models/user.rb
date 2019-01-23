@@ -14,8 +14,9 @@
 #  provider               :string
 #  uid                    :string
 #  image                  :string
+#  website                :string
+#  biography              :text
 #
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -24,6 +25,8 @@ class User < ApplicationRecord
          omniauth_providers: [:twitter]
 
   validates :name, presence: true, length: { in: 6..50 }
+
+  has_many :posts, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

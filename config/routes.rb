@@ -35,6 +35,7 @@ Rails.application.routes.draw do
                            edit: 'profile',
                            sign_up: 'registration' }
   resources :users, only: [:show]
+  resources :posts, only: %i[index show create]
   get 'home/home'
   root to: 'home#home'
 end

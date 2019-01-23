@@ -14,6 +14,8 @@
 #  provider               :string
 #  uid                    :string
 #  image                  :string
+#  website                :string
+#  biography              :text
 #
 
 require 'test_helper'

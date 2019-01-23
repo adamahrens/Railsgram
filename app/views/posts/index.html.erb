@@ -1,0 +1,16 @@
+<h2>Create A Post</h2>
+<%= form_with model: @post, multipart: true do |form| %>
+<%= form.label :content %>
+<%= form.text_field :content %>
+<%= form.file_field :photo %>
+<%= form.submit 'Create' %>
+<% end %>
+
+<h3>All Posts</h3>
+<%= @posts.inspect %>
+
+<% @posts.each do |post| %>
+<h4><%= post.user.name %>
+  Posted</h4>
+<%= image_tag url_for(post.photo) %>
+<% end %>
