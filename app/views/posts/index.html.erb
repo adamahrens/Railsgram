@@ -1,10 +1,36 @@
-<h2>Create A Post</h2>
-<%= form_with model: @post, multipart: true do |form| %>
-<%= form.label :content %>
-<%= form.text_field :content %>
-<%= form.file_field :photo %>
-<%= form.submit 'Create' %>
-<% end %>
+<div class="d-flex flex-column align-itens mt-3">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+    <div class="card">
+      <div class="card-header">
+        Create A Post
+      </div>
+      <div class="card-body">
+        <%= form_with model: @post, local: true, multipart: true, class: 'dropzone needsclick dz-clickable p-0 border-0' do |form| %>
+        <div class="form-group row mt-2">
+          <div class="col-md-2 pr-0">
+            <%= gravatar_image_tag current_user.email, gravatar: { size: 100 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
+          </div>
+          <div class="col-md-10 pl-1">
+            <div class="form-group">
+              <%= form.text_field :content, class: 'form-control border-0', placeholder: 'Whats on your mind?' %>
+            </div>
+            <div class="dz-message needsclick d-flex flex-column justify-content-center">
+              Drop files here or click to upload.
+              <%= fa_icon("plus", class: 'fa-2x') %>
+            </div>
+            <div class="submission pt-1">
+              <%= form.submit 'Post', class: 'btn btn-outline-primary btn-block' %>
+            </div>
+          </div>
+          <div class="fallback">
+            <%= form.file_field :photo %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
 
 <h3>All Posts</h3>
 <%= @posts.inspect %>

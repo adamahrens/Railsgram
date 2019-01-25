@@ -107,6 +107,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    dropzonejs-rails (0.8.4)
+      rails (> 3.1)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -288,6 +290,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.5)
+  dropzonejs-rails (~> 0.8.4)
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   gravatar_image_tag (~> 1.2)
   jbuilder (~> 2.5)

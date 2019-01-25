@@ -1,10 +1,12 @@
 @import 'bootstrap';
 @import 'font-awesome';
 @import 'toastr';
+@import 'dropzone/dropzone';
 
 $rails-gray: #999999;
 $rails-offwhite: #FAFAFA;
 $rails-soft-gray: #E6E6E6;
+$rails-dropzone: #007bff;
 
 body {
   background-color: $rails-offwhite;
@@ -155,4 +157,14 @@ footer {
       }
     }
   }
+}
+
+.dz-message {
+  border: 2px dashed $rails-dropzone;
+  color: $rails-dropzone;
+  border-radius: 5px;
+  background: white;
+  height: 150px;
+  font-weight: 300;
+  font-size: 1.5em;
 }
