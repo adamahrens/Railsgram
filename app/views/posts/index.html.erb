@@ -12,5 +12,8 @@
 <% @posts.each do |post| %>
 <h4><%= post.user.name %>
   Posted</h4>
+<p>
+  <%= post.content %>
+</p>
 <%= image_tag url_for(post.photo) %>
 <% end %>
