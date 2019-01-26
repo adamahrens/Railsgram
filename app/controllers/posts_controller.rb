@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all.limit(10)
+    @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user)
     @post = Post.new
   end
 

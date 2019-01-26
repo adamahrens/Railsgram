@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-itens mt-3">
+<div class="d-flex flex-column align-items mt-3">
   <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
     <div class="card">
       <div class="card-header">
@@ -22,24 +22,14 @@
               <%= form.submit 'Post', class: 'btn btn-outline-primary btn-block' %>
             </div>
           </div>
-          <div class="fallback">
-            <%= form.file_field :photo %>
-          </div>
         </div>
       <% end %>
     </div>
   </div>
+  <div class="mt-4">
+    <h3 class="text-center">All Posts</h3>
+    <%= render @posts %>
+  </div>
+
 </div>
 </div>
-
-<h3>All Posts</h3>
-<%= @posts.inspect %>
-
-<% @posts.each do |post| %>
-<h4><%= post.user.name %>
-  Posted</h4>
-<p>
-  <%= post.content %>
-</p>
-<%= image_tag url_for(post.photo) %>
-<% end %>

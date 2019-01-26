@@ -1,0 +1,36 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <%= link_to user_path(post.user), class: 'no-text-decoration' do %>
+    <%= gravatar_image_tag post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
+  <% end %>
+  <span class="ml-1"><%= post.user.name %></span>
+</div>
+
+<%= image_tag url_for(post.photo), class: 'card-img-top' %>
+<div class="card-body">
+  <div class="row actions">
+    <a href="#" class="core-sprite love hide-text"></a>
+    <a href="#" class="core-sprite comment hide-text"></a>
+    <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
+  </div>
+  <div class="mt-2">
+    <strong>
+      <%= pluralize(16, 'like')%></strong>
+  </div>
+  <p class="card-text"><%= post.content %></p>
+  <hr/>
+  <div class="row actions">
+    <form action="#" class="w-100">
+      <div class="form-group">
+        <textarea name="name" class="form-control comment-input border-0" placeholder="Add a comment" rows="3"></textarea>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card-footer">
+  Posted
+  <%= time_ago_in_words(post.created_at) %>
+  ago
+</div>
+</div>

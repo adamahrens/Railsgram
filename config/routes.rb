@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :posts, only: %i[index show create]
   get 'home/home'
-  root to: 'home#home'
+  root to: 'posts#index'
 end
