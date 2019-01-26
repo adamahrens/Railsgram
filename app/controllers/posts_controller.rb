@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.photo = params[:photo]
     if @post.save
       flash[:notice] = 'Post has been saved!'
     else
