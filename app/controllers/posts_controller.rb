@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.user == current_user && @post.destroy
+    authorize @post
+    if @post.destroy
       flash[:notice] = 'Post has been deleted'
     else
       flash[:alert] = 'This action is not authorized'
