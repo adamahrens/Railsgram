@@ -203,4 +203,10 @@ textarea {
 
 .comment-input {
   resize: none;
+  background-color: $rails-offwhite;
+}
+
+.comment-list {
+  height: 450px;
+  overflow: auto;
 }
