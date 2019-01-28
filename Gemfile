@@ -28,7 +28,9 @@ group :development, :test do
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot', '~> 4.11', '>= 4.11.1'
   gem 'meta_request', '~> 0.6.0'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
 end
 
 group :development do
@@ -44,6 +46,8 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
+  gem 'database_cleaner', '~> 1.7'
+  gem 'pundit-matchers', '~> 1.6'
   gem 'selenium-webdriver'
 end
 
