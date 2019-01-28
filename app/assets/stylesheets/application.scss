@@ -7,11 +7,12 @@ $rails-gray: #999999;
 $rails-offwhite: #FAFAFA;
 $rails-soft-gray: #E6E6E6;
 $rails-dropzone: #007bff;
+$rails-dark-gray: #262626;
 
 body {
   background-color: $rails-offwhite;
   font-family: 'Roboto', 'Helvetica', sans-serif;
-  color: #262626;
+  color: $rails-dark-gray;
   font-size: 16px;
 }
 
@@ -209,4 +210,8 @@ textarea {
 .comment-list {
   height: 450px;
   overflow: auto;
+}
+
+.delete-post-item {
+  color: $rails-dark-gray;
 }

@@ -6,11 +6,15 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-5 mt-sm-4 mt-md-0">
-      <div class="row px-3 d-flex align-items-center">
-        <%= link_to user_path(@post.user), class: 'no-text-decoration' do %>
-          <%= gravatar_image_tag @post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
-        <% end %>
-        <span class="ml-1"><strong><%= @post.user.name %></strong></span>
+      <div class="row px-3 d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <%= link_to user_path(@post.user), class: 'no-text-decoration' do %>
+            <%= gravatar_image_tag @post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
+          <% end %>
+          <span class="ml-1"><strong><%= @post.user.name %></strong></span>
+        </div>
+
+        <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(@post), method: :delete, class: 'float-right delete-post-item' %>
       </div>
       <hr class="mb-0" />
       <div class="comment-list py-2">
