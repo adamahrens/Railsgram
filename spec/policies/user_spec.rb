@@ -12,7 +12,8 @@ RSpec.describe PostPolicy do
 
   context 'not being the owner of a post' do
     let(:user) { FactoryBot.create(:user) }
-    let(:post) { Post.create(content: 'My first post', user: FactoryBot.create(:other)) }
+    let(:other) { FactoryBot.create(:other) }
+    let(:post) { Post.create(content: 'My first post', user: other) }
     it { is_expected.to forbid_action(:destroy) }
   end
 end
