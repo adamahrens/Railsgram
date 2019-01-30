@@ -4,9 +4,11 @@
     <%= gravatar_image_tag post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
   <% end %>
   <span class="ml-1"><strong><%= post.user.name %></strong></span>
-  <span>
-    <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(post), method: :delete, class: 'float-right delete-post-item' %>
-  </span>
+  <% if policy(post).destroy? %>
+    <span>
+      <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(post), method: :delete, class: 'float-right delete-post-item' %>
+    </span>
+  <% end %>
 </div>
 
 <%= image_tag url_for(post.photo), class: 'card-img-top' %>

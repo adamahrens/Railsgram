@@ -1,8 +1,8 @@
 <div class="d-flex flex-column align-items-center mt-3">
   <div class="row post box col-xl-10 col-lg-11 col-xs-12">
-    <div class="col-lg-8 col-md-7 px-0 d-flex post-show-img">
-      <div class="align-self-center">
-        <%= image_tag url_for(@post.photo), class: 'card-img-top' %>
+    <div class="col-lg-8 col-md-7 px-0 d-flex">
+      <div>
+        <%= image_tag url_for(@post.photo), class: 'img-thumbnail rounded post-image' %>
       </div>
     </div>
     <div class="col-lg-4 col-md-5 mt-sm-4 mt-md-0">
@@ -14,7 +14,10 @@
           <span class="ml-1"><strong><%= @post.user.name %></strong></span>
         </div>
 
-        <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(@post), method: :delete, class: 'float-right delete-post-item' %>
+        <% if policy(@post).destroy? %>
+          <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(@post), method: :delete, class: 'float-right delete-post-item' %>
+        <% end %>
+
       </div>
       <hr class="mb-0" />
       <div class="comment-list py-2">
