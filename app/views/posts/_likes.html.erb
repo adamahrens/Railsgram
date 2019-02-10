@@ -1,9 +1,11 @@
-<div class="mt-2">
-  <% if post.likes.count == 1 %>
-    <strong><%= post.likes.last.user.name%></strong>
-    likes this
-    <% elsif post.likes.count > 1 %>
-      <strong>
-        <%= pluralize(post.likes.count, 'like')%></strong>
-    <% end %>
+<div class="mt-2" id="like-text-post-<%= post.id.to_s%>">
+  <div id="like-text-post-<%= post.id.to_s%>">
+    <% if post.likes.count == 1 %>
+      <strong><%= post.likes.last.user.name%></strong>
+      likes this
+      <% elsif post.likes.count > 1 %>
+        <strong>
+          <%= pluralize(post.likes.count, 'like')%></strong>
+      <% end %>
+    </div>
   </div>
