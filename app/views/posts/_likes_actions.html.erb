@@ -1,0 +1,5 @@
+<% if my_likes.include?(post.id) %>
+  <%= link_to '', like_path(post), method: :delete, remote: true, class: 'core-sprite loved hide-text', id: "like-icon-post-#{post.id.to_s}" %>
+<% else %>
+  <%= link_to '', post_likes_path(post), method: :post, remote: true, class: 'core-sprite love hide-text', id: "like-icon-post-#{post.id.to_s}" %>
+<% end %>

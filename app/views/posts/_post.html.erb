@@ -3,7 +3,9 @@
     <%= link_to user_path(post.user), class: 'no-text-decoration' do %>
     <%= gravatar_image_tag post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
   <% end %>
-  <span class="ml-1"><strong><%= post.user.name %></strong></span>
+  <span class="ml-1">
+    <strong><%= post.user.name %></strong>
+  </span>
   <% if policy(post).destroy? %>
     <span>
       <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(post), method: :delete, class: 'float-right delete-post-item' %>
@@ -14,15 +16,18 @@
 <%= image_tag url_for(post.photo), class: 'card-img-top' %>
 <div class="card-body">
   <div class="row actions ml-0">
-    <a href="#" class="core-sprite love hide-text"></a>
+    <%= render 'likes_actions', { my_likes: @my_likes, post: post} %>
     <a href="#" class="core-sprite comment hide-text"></a>
     <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
   </div>
-  <div class="mt-2">
-    <strong>
-      <%= pluralize(16, 'like')%></strong>
-  </div>
-  <p class="card-text"><span><strong><%= post.user.name %></strong></span> <%= post.content %></p>
+
+  <%= render 'likes', { post: post} %>
+
+  <p class="card-text">
+    <span>
+      <strong><%= post.user.name %></strong>
+    </span>
+    <%= post.content %></p>
   <hr/>
   <div class="row actions">
     <form action="#" class="w-100">

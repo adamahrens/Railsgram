@@ -9,16 +9,16 @@ class LikesController < ApplicationController
     else
       flash[:alert] = 'Error saving like'
     end
-   end
+  end
 
   def destroy
-    @like = Like.find(params[:id])
+    @like = Like.find_by(post_id: params[:id], user: current_user)
     @post = @like.post
 
-    if @list.destroy
+    if @like.destroy
       respond_to :js
     else
-      lash[:alert] = 'Error deleting like'
+      flash[:alert] = 'Error deleting like'
     end
   end
 

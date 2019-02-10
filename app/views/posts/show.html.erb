@@ -9,50 +9,54 @@
       <div class="row px-3 d-flex justify-content-between">
         <div class="d-flex align-items-center">
           <%= link_to user_path(@post.user), class: 'no-text-decoration' do %>
-            <%= gravatar_image_tag @post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
-          <% end %>
-          <span class="ml-1"><strong><%= @post.user.name %></strong></span>
-        </div>
-
-        <% if policy(@post).destroy? %>
-          <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(@post), method: :delete, class: 'float-right delete-post-item' %>
+          <%= gravatar_image_tag @post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
         <% end %>
+        <span class="ml-1">
+          <strong><%= @post.user.name %></strong>
+        </span>
+      </div>
 
-      </div>
-      <hr class="mb-0" />
-      <div class="comment-list py-2">
-        <span><strong><%= @post.user.name %></strong></span>
-        <span><%= @post.content %></span>
-        <br />
-        <% 30.times do %>
-          <span><strong><%= Faker::Lebowski.character %></strong></span>
-          <span><%= Faker::Lebowski.quote%></span>
-          <br />
-        <% end %>
-      </div>
-      <hr class="mt-2" />
-      <div class="row actions ml-1 mr-1">
-        <a href="#" class="core-sprite love hide-text"></a>
-        <a href="#" class="core-sprite comment hide-text"></a>
-        <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
-      </div>
-      <div class="mt-2 ml-1 mr-1">
-        <strong>
-          <%= pluralize(16, 'like')%>
-        </strong>
-        <div>
-          <%= 'Posted ' + time_ago_in_words(@post.created_at) + ' ago' %>
-        </div>
-      </div>
-      <hr/>
-      <div class="row actions ml-1 mr-1">
-        <form action="#" class="w-100">
-          <div class="form-group">
-            <textarea name="name" class="form-control comment-input border-0" placeholder="Add a comment" rows="6"></textarea>
-          </div>
-        </form>
-      </div>
+      <% if policy(@post).destroy? %>
+        <%= link_to fa_icon('trash', class: 'fa-2x'), post_path(@post), method: :delete, class: 'float-right delete-post-item' %>
+      <% end %>
 
     </div>
+    <hr class="mb-0"/>
+    <div class="comment-list py-2">
+      <span>
+        <strong><%= @post.user.name %></strong>
+      </span>
+      <span><%= @post.content %></span>
+      <br/>
+      <% 30.times do %>
+        <span>
+          <strong><%= Faker::Lebowski.character %></strong>
+        </span>
+        <span><%= Faker::Lebowski.quote%></span>
+        <br/>
+      <% end %>
+    </div>
+    <hr class="mt-2"/>
+    <div class="row actions ml-1 mr-1">
+      <%= render 'likes_actions', { my_likes: @my_likes, post: @post} %>
+      <a href="#" class="core-sprite comment hide-text"></a>
+      <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
+    </div>
+    <div class="mt-2 ml-1 mr-1">
+      <%= render 'likes', { post: @post} %>
+      <div>
+        <%= 'Posted ' + time_ago_in_words(@post.created_at) + ' ago' %>
+      </div>
+    </div>
+    <hr/>
+    <div class="row actions ml-1 mr-1">
+      <form action="#" class="w-100">
+        <div class="form-group">
+          <textarea name="name" class="form-control comment-input border-0" placeholder="Add a comment" rows="6"></textarea>
+        </div>
+      </form>
+    </div>
+
   </div>
+</div>
 </div>

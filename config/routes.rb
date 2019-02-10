@@ -41,7 +41,7 @@ Rails.application.routes.draw do
                            sign_up: 'registration' }
   resources :users, only: [:show]
   resources :posts, only: %i[index show create destroy] do
-    resources :likes, only: %i[create destroy]
+    resources :likes, only: %i[create destroy], shallow: true
   end
 
   get 'home/home'

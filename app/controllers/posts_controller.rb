@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user, :likes)
+    @my_likes = Like.where(user: current_user).pluck(:post_id)
     @post = Post.new
   end
 
@@ -23,7 +24,7 @@ class PostsController < ApplicationController
 
   def show
     @likes = @post.likes.includes(:user)
-    @current_likes = Like.find_by(user_id: current_user.id, post_id: @post.id)
+    @my_likes = Like.where(user: current_user).pluck(:post_id)
   end
 
   def destroy
