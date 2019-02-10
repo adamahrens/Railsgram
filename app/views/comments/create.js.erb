@@ -1,0 +1,2 @@
+$(document).ready( function () { console.log('Create comment called'); $('#comments').prepend('<%= j render "posts/comment", { comment: @comment} %>'); $('#comments-form').html('<%= j render "posts/comment_form", { comment: Comment.new, post: @post } %>');
+});

@@ -28,13 +28,12 @@
       </span>
       <span><%= @post.content %></span>
       <br/>
-      <% 30.times do %>
-        <span>
-          <strong><%= Faker::Lebowski.character %></strong>
-        </span>
-        <span><%= Faker::Lebowski.quote%></span>
-        <br/>
-      <% end %>
+
+      <div id="comments">
+        <% @post.comments.each do |comment| %>
+          <%= render 'posts/comment', { comment: comment } %>
+        <% end %>
+      </div>
     </div>
     <hr class="mt-2"/>
     <div class="row actions ml-1 mr-1">
@@ -49,14 +48,9 @@
       </div>
     </div>
     <hr/>
-    <div class="row actions ml-1 mr-1">
-      <form action="#" class="w-100">
-        <div class="form-group">
-          <textarea name="name" class="form-control comment-input border-0" placeholder="Add a comment" rows="6"></textarea>
-        </div>
-      </form>
+    <div class="row actions ml-1 mr-1" id="comments-form">
+      <%= render 'posts/comment_form', { comment: Comment.new, post: @post } %>
     </div>
-
   </div>
 </div>
 </div>
