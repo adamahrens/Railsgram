@@ -11,6 +11,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
+  has_many :likes, -> { order(created_at: :desc) }
 
   validates :content, presence: true, length: { minimum: 10 }
   validates :user, presence: true

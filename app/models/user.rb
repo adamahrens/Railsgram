@@ -27,6 +27,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 6..50 }
 
   has_many :posts, dependent: :destroy
+  has_many :likes
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

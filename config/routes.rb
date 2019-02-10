@@ -11,15 +11,20 @@
 #                   user_password PATCH    /users/password(.:format)                                                                devise/passwords#update
 #                                 PUT      /users/password(.:format)                                                                devise/passwords#update
 #                                 POST     /users/password(.:format)                                                                devise/passwords#create
-#        cancel_user_registration GET      /users/cancel(.:format)                                                                  devise/registrations#cancel
-#           new_user_registration GET      /users/registration(.:format)                                                            devise/registrations#new
-#          edit_user_registration GET      /users/profile(.:format)                                                                 devise/registrations#edit
-#               user_registration PATCH    /users(.:format)                                                                         devise/registrations#update
-#                                 PUT      /users(.:format)                                                                         devise/registrations#update
-#                                 DELETE   /users(.:format)                                                                         devise/registrations#destroy
-#                                 POST     /users(.:format)                                                                         devise/registrations#create
+#        cancel_user_registration GET      /users/cancel(.:format)                                                                  registrations#cancel
+#           new_user_registration GET      /users/registration(.:format)                                                            registrations#new
+#          edit_user_registration GET      /users/profile(.:format)                                                                 registrations#edit
+#               user_registration PATCH    /users(.:format)                                                                         registrations#update
+#                                 PUT      /users(.:format)                                                                         registrations#update
+#                                 DELETE   /users(.:format)                                                                         registrations#destroy
+#                                 POST     /users(.:format)                                                                         registrations#create
+#                            user GET      /users/:id(.:format)                                                                     users#show
+#                           posts GET      /posts(.:format)                                                                         posts#index
+#                                 POST     /posts(.:format)                                                                         posts#create
+#                            post GET      /posts/:id(.:format)                                                                     posts#show
+#                                 DELETE   /posts/:id(.:format)                                                                     posts#destroy
 #                       home_home GET      /home/home(.:format)                                                                     home#home
-#                            root GET      /                                                                                        home#home
+#                            root GET      /                                                                                        posts#index
 #              rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #       rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #              rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -35,7 +40,10 @@ Rails.application.routes.draw do
                            edit: 'profile',
                            sign_up: 'registration' }
   resources :users, only: [:show]
-  resources :posts, only: %i[index show create destroy]
+  resources :posts, only: %i[index show create destroy] do
+    resources :likes, only: %i[create destroy]
+  end
+
   get 'home/home'
   root to: 'posts#index'
 end

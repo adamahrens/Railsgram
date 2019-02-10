@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
   def index
-    @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user)
+    @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user, :likes)
     @post = Post.new
   end
 
@@ -22,6 +22,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @likes = @post.likes.includes(:user)
+    @current_likes = Like.find_by(user_id: current_user.id, post_id: @post.id)
   end
 
   def destroy
