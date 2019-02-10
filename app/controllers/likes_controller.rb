@@ -14,7 +14,6 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find_by(post_id: params[:id], user: current_user)
     @post = @like.post
-
     if @like.destroy
       respond_to :js
     else
