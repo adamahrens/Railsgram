@@ -207,6 +207,10 @@ textarea {
   background-color: $rails-offwhite;
 }
 
+.card-body .comment-input {
+  background-color: white;
+}
+
 .comment-list {
   height: 450px;
   overflow: auto;
