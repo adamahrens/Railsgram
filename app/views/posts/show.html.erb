@@ -29,7 +29,7 @@
       <span><%= @post.content %></span>
       <br/>
 
-      <div id="comments">
+      <div id="comments-<%=@post.id%>">
         <% @post.comments.each do |comment| %>
           <%= render 'posts/comment', { comment: comment } %>
         <% end %>
@@ -48,7 +48,7 @@
       </div>
     </div>
     <hr/>
-    <div class="row actions ml-1 mr-1" id="comments-form">
+    <div class="row actions ml-1 mr-1" id="comments-form-<%=@post.id%>">
       <%= render 'posts/comment_form', { comment: Comment.new, post: @post } %>
     </div>
   </div>
