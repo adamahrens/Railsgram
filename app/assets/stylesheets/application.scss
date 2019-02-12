@@ -111,6 +111,11 @@ textarea {
   background-position: -150px -353px;
 }
 
+.bookmarked {
+  @extend .love;
+  background-position: -353px -273px;
+}
+
 .nav-item:not(:first-child) {
   margin-left: 25px;
 }

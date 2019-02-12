@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   def show
     @likes = @post.likes.includes(:user)
     @my_likes = Like.where(user: current_user).pluck(:post_id)
+    @bookmark = Bookmark.find_by(user: current_user, post: @post)
   end
 
   def destroy

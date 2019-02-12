@@ -39,7 +39,7 @@
     <div class="row actions ml-1 mr-1">
       <%= render 'likes_actions', { my_likes: @my_likes, post: @post} %>
       <a href="#" class="core-sprite comment hide-text"></a>
-      <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
+      <%= render 'bookmark_actions', {bookmark: @bookmark, post: @post} %>
     </div>
     <div class="mt-2 ml-1 mr-1">
       <%= render 'likes', { post: @post} %>

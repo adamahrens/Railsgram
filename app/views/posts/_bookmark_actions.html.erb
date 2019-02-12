@@ -1,0 +1,5 @@
+<% unless bookmark.nil? %>
+  <%= link_to '', bookmark_path(bookmark), method: :delete, remote: true, class: 'core-sprite bookmarked hide-text ml-auto', id: "bookmark-icon-post-#{post.id.to_s}" %>
+<% else %>
+  <%= link_to '', post_bookmarks_path(post), method: :post, remote: true, class: 'core-sprite bookmark hide-text ml-auto', id: "bookmark-icon-post-#{post.id.to_s}" %>
+<% end %>

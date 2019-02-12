@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes
   has_many :comments
+  has_many :bookmarks
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

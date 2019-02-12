@@ -1,0 +1,2 @@
+$(document).ready( function () { console.log('Destroy bookmark called'); $("#bookmark-icon-post-<%= @post.id.to_s %>").attr('href', '<%= post_bookmarks_path(@post) %>'); $("#bookmark-icon-post-<%= @post.id.to_s %>").attr('data-method', 'post'); $("#bookmark-icon-post-<%= @post.id.to_s %>").removeClass('bookmarked'); $("#bookmark-icon-post-<%= @post.id.to_s %>").addClass('bookmark');
+});
