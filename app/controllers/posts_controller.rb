@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user, :likes)
     @my_likes = Like.where(user: current_user).pluck(:post_id)
+    @my_bookmarks = Bookmark.where(user: current_user).includes(:post)
     @post = Post.new
   end
 

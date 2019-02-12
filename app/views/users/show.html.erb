@@ -4,7 +4,7 @@
       <%= gravatar_image_tag @user.email, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
       <% if @user == current_user %>
         <div class="mt-2 mb-2">
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger btn-lg'  %>
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger btn-lg' %>
         </div>
       <% end %>
     </div>
@@ -15,10 +15,14 @@
         <h1><%= @user.name %></h1>
       </div>
       <div class="mt-2 mb-2">
-        <h5> <%= fa_icon('envelope') %> <%= @user.email %></h5>
+        <h5>
+          <%= fa_icon('envelope') %>
+          <%= @user.email %></h5>
       </div>
       <div class="mt-2 mb-2">
-        <h5> <%= fa_icon('file') %> <%= @user.website %></h5>
+        <h5>
+          <%= fa_icon('file') %>
+          <%= @user.website %></h5>
       </div>
       <div class="mt-2 mb-2">
         <p>
@@ -28,8 +32,9 @@
 
       <% if @user.provider %>
         <div>
-        <p>
-          Logged in via <%= fa_icon('twitter', text: 'Twitter') %>
+          <p>
+            Logged in via
+            <%= fa_icon('twitter', text: 'Twitter') %>
           </p>
         </div>
       <% end %>
@@ -41,4 +46,6 @@
       <% end %>
     </div>
   </div>
+
+  <div class="profile-tab"></div>
 </div>

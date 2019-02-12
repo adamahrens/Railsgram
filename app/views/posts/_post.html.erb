@@ -18,29 +18,30 @@
   <div class="row actions ml-0">
     <%= render 'likes_actions', { my_likes: @my_likes, post: post} %>
     <a href="#" class="core-sprite comment hide-text"></a>
-    <a href="#" class="core-sprite bookmark hide-text ml-auto"></a>
+    <% bookmark =  @my_bookmarks.select { |b| b.post_id == post.id }.first %>
+      <%= render 'bookmark_actions', { bookmark: bookmark, post: post} %>
+    </div>
+
+    <%= render 'likes', { post: post} %>
+
+    <p class="card-text">
+      <span>
+        <strong><%= post.user.name %></strong>
+      </span>
+      <%= post.content %></p>
+    <hr/>
+
+    <div id="comments-<%=post.id%>">
+      <% post.comments.each do |comment| %>
+        <%= render 'posts/comment', { comment: comment } %>
+      <% end %>
+    </div>
+    <div class="row actions m-1" id="comments-form-<%=post.id%>">
+      <%= render 'posts/comment_form', { comment: Comment.new, post: post } %>
+    </div>
   </div>
 
-  <%= render 'likes', { post: post} %>
-
-  <p class="card-text">
-    <span>
-      <strong><%= post.user.name %></strong>
-    </span>
-    <%= post.content %></p>
-  <hr/>
-
-  <div id="comments-<%=post.id%>">
-    <% post.comments.each do |comment| %>
-      <%= render 'posts/comment', { comment: comment } %>
-    <% end %>
+  <div class="card-footer">
+    <%= link_to 'Posted ' + time_ago_in_words(post.created_at) + ' ago', post %>
   </div>
-  <div class="row actions m-1" id="comments-form-<%=post.id%>">
-    <%= render 'posts/comment_form', { comment: Comment.new, post: post } %>
-  </div>
-</div>
-
-<div class="card-footer">
-  <%= link_to 'Posted ' + time_ago_in_words(post.created_at) + ' ago', post %>
-</div>
 </div>
