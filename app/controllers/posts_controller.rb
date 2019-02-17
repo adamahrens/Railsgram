@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     page = params[:page]
     @posts = Post.all
-                 .order(created_at: 'desc')
+                 .order(created_at: :desc)
                  .includes(:user, :likes)
                  .page(page)
     @my_likes = Like.where(user: current_user).pluck(:post_id)
