@@ -1,0 +1,30 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <%= link_to user_path(post.user), class: 'no-text-decoration' do %>
+    <%= gravatar_image_tag post.user.email, gravatar: { size: 50 }, alt: 'Profile Picture', class: 'img-thumbnail rounded-circle' %>
+  <% end %>
+  <span class="ml-1">
+    <strong><%= post.user.name %></strong>
+  </span>
+</div>
+
+<%= image_tag url_for(post.photo), class: 'card-img-top' %>
+<div class="card-body">
+  <p class="card-text">
+    <span>
+      <strong><%= post.user.name %></strong>
+    </span>
+    <%= post.content %></p>
+  <hr/>
+
+  <div id="comments-<%=post.id%>">
+    <% post.comments.each do |comment| %>
+      <%= render 'posts/comment', { comment: comment } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="card-footer">
+  <%= link_to 'Posted ' + time_ago_in_words(post.created_at) + ' ago', post %>
+</div>
+</div>
