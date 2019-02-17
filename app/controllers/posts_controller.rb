@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
   def index
-    @posts = Post.all.limit(10).order(created_at: 'desc').includes(:user, :likes)
+    page = params[:page]
+    @posts = Post.all
+                 .order(created_at: 'desc')
+                 .includes(:user, :likes)
+                 .page(page)
     @my_likes = Like.where(user: current_user).pluck(:post_id)
     @my_bookmarks = Bookmark.where(user: current_user).includes(:post)
     @post = Post.new

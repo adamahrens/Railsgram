@@ -1,6 +1,9 @@
 # == Route Map
 #
 #                          Prefix Verb     URI Pattern                                                                              Controller#Action
+#                  comments_index GET      /comments/index(.:format)                                                                comments#index
+#                 comments_create GET      /comments/create(.:format)                                                               comments#create
+#                comments_destroy GET      /comments/destroy(.:format)                                                              comments#destroy
 #                new_user_session GET      /users/login(.:format)                                                                   devise/sessions#new
 #                    user_session POST     /users/login(.:format)                                                                   devise/sessions#create
 #            destroy_user_session DELETE   /users/logout(.:format)                                                                  devise/sessions#destroy
@@ -18,7 +21,15 @@
 #                                 PUT      /users(.:format)                                                                         registrations#update
 #                                 DELETE   /users(.:format)                                                                         registrations#destroy
 #                                 POST     /users(.:format)                                                                         registrations#create
+#                           users GET      /users(.:format)                                                                         users#index
 #                            user GET      /users/:id(.:format)                                                                     users#show
+#                      post_likes POST     /posts/:post_id/likes(.:format)                                                          likes#create
+#                            like DELETE   /likes/:id(.:format)                                                                     likes#destroy
+#                   post_comments GET      /posts/:post_id/comments(.:format)                                                       comments#index
+#                                 POST     /posts/:post_id/comments(.:format)                                                       comments#create
+#                         comment DELETE   /comments/:id(.:format)                                                                  comments#destroy
+#                  post_bookmarks POST     /posts/:post_id/bookmarks(.:format)                                                      bookmarks#create
+#                        bookmark DELETE   /bookmarks/:id(.:format)                                                                 bookmarks#destroy
 #                           posts GET      /posts(.:format)                                                                         posts#index
 #                                 POST     /posts(.:format)                                                                         posts#create
 #                            post GET      /posts/:id(.:format)                                                                     posts#show
@@ -42,7 +53,7 @@ Rails.application.routes.draw do
                            sign_out: 'logout',
                            edit: 'profile',
                            sign_up: 'registration' }
-  resources :users, only: [:show]
+  resources :users, only: %i[index show]
   resources :posts, only: %i[index show create destroy] do
     resources :likes, only: %i[create destroy], shallow: true
     resources :comments, only: %i[index create destroy], shallow: true
